@@ -1,0 +1,76 @@
+export MANPATH=/opt/local/man:$MANPATH
+export LANG=ja_JP.UTF-8
+export M2_HOME=/usr/local/maven3
+export M2_REPO=$HOME/.m2/repository
+export SVNREPO=$HOME/Documents/svnrepos
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home 
+export GROOVY_HOME=/usr/local/groovy
+export GRAILS_HOME=/usr/local/grails-1.3.2
+export GRIFFON_HOME=/usr/local/griffon
+export HADOOP_HOME=/usr/local/hadoop
+
+PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
+PATH=/usr/local/sbin:/usr/local/bin:$PATH
+PATH=$HOME/.rvm/bin:$PATH
+
+PATH=$M2_HOME/bin:$PATH
+PATH=$GROOVY_HOME/bin:$PATH
+PATH=$GRAILS_HOME/bin:$PATH
+PATH=$GRIFFON_HOME/bin:$PATH
+PATH=$HADOOP_HOME/bin:$PATH
+PATH=/usr/local/groovyserv/bin:$PATH
+
+PATH=$HOME/bin:$PATH
+export PATH
+
+case ${UID} in
+0)
+    PROMPT="%B%{[31m%}%/#%{[m%}%b "
+    PROMPT2="%B%{[31m%}%_#%{[m%}%b "
+    SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+        PROMPT="%{^[[37m%}${HOST%%.*} ${PROMPT}"
+    ;;
+*)
+    PROMPT="%{[31m%}%/%%%{[m%} "
+    PROMPT2="%{[31m%}%_%%%{[m%} "
+    SPROMPT="%{[31m%}%r is correct? [n,y,a,e]:%{[m%} "
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+        PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+    ;;
+esac 
+
+bindkey -e
+autoload -Uz compinit; compinit
+setopt magic_equal_subst
+setopt print_eight_bit
+setopt auto_pushd
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt hist_ignore_dups
+setopt share_history
+
+classpathjars () { find $1 -name "*.jar" | xargs | sed 's/ /:/g' }
+
+export CLICOLOR=1
+
+
+export JREBEL_HOME=/Applications/ZeroTurnaround/JRebel
+PATH=$JREBEL_HOME/bin:$PATH
+
+
+MAVEN_OPTS="-ea -Dfile.encoding=UTF-8 -DsocksProxyHost=localhost -DsocksProxyPort=1080"
+
+# git ##################################################
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+RPROMPT="%1(v|%F{green}%1v%f|)"
+
