@@ -1,0 +1,14 @@
+escape ^z^z
+autodetach on
+nethack off
+defencoding UTF8
+multiuser on
+acladd aueda
+vbell off
+hardstatus on
+hardstatus alwayslastline "%{= wk} %-w%{=bu .b}%n %t%{-}%+w %= %{= wk}%y/%m/%d(%D) %{= wk}%c"
+defscrollback 4000
+term vt100
+
+bind a other
+bind d setenv DISPLAY
