@@ -2,6 +2,6 @@
 /*.iws
 /*.iml
 /*.ipr
-/target
+target
 .DS_Store
 /.idea
