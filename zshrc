@@ -1,13 +1,4 @@
-export MANPATH=/opt/local/man:$MANPATH
 export LANG=ja_JP.UTF-8
-export M2_HOME=/usr/local/maven3
-export M2_REPO=$HOME/.m2/repository
-export SVNREPO=$HOME/Documents/svnrepos
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home 
-export GROOVY_HOME=/usr/local/groovy
-export GRAILS_HOME=/usr/local/grails-1.3.2
-export GRIFFON_HOME=/usr/local/griffon
-export HADOOP_HOME=/usr/local/hadoop
 
 PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 PATH=/usr/local/sbin:/usr/local/bin:$PATH
