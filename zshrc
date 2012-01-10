@@ -4,7 +4,6 @@ PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 PATH=/usr/local/sbin:/usr/local/bin:$PATH
 PATH=$HOME/.rvm/bin:$PATH
 
-PATH=$M2_HOME/bin:$PATH
 PATH=$GROOVY_HOME/bin:$PATH
 PATH=$GRAILS_HOME/bin:$PATH
 PATH=$GRIFFON_HOME/bin:$PATH
