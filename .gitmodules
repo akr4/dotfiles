@@ -2,3 +2,6 @@
 	path = vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
 
+[submodule "vim/bundle/skk.vim"]
+	path = vim/bundle/skk.vim
+	url = https://github.com/tyru/skk.vim.git
