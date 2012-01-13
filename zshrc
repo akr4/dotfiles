@@ -1,4 +1,13 @@
 export LANG=ja_JP.UTF-8
+export M2_HOME=/usr/local/maven3
+export M2_REPO=$HOME/.m2/repository
+export SVNREPO=$HOME/Documents/svnrepos
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home 
+export GROOVY_HOME=/usr/local/groovy
+export GRAILS_HOME=/usr/local/grails-1.3.2
+export GRIFFON_HOME=/usr/local/griffon
+export HADOOP_HOME=/usr/local/hadoop
+export SPHINX_PATH=/usr/local/Cellar/python/2.7/bin/
 
 PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 PATH=/usr/local/sbin:/usr/local/bin:$PATH
@@ -9,6 +18,7 @@ PATH=$GRAILS_HOME/bin:$PATH
 PATH=$GRIFFON_HOME/bin:$PATH
 PATH=$HADOOP_HOME/bin:$PATH
 PATH=/usr/local/groovyserv/bin:$PATH
+PATH=$SPHINX_PATH:$PATH
 
 PATH=$HOME/bin:$PATH
 export PATH
