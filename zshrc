@@ -1,5 +1,4 @@
 export LANG=ja_JP.UTF-8
-export M2_HOME=/usr/local/maven3
 export M2_REPO=$HOME/.m2/repository
 export SVNREPO=$HOME/Documents/svnrepos
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home 
@@ -55,6 +54,7 @@ setopt share_history
 classpathjars () { find $1 -name "*.jar" | xargs | sed 's/ /:/g' }
 
 export CLICOLOR=1
+export GREP_OPTIONS='--color=auto'
 
 
 export JREBEL_HOME=/Applications/ZeroTurnaround/JRebel
