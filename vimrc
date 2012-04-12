@@ -1,8 +1,32 @@
-call pathogen#infect()
+set nocompatible
+filetype plugin indent off
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'taglist.vim'
+NeoBundle 'skk.vim'
+NeoBundle 'vim-scala'
 
 filetype plugin indent on
 
-colorscheme solarized
+
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_quick_match = 1
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
+    \ }
+
+
+
 syntax on
 
 set incsearch
@@ -25,6 +49,5 @@ let skk_show_annotation = 1
 let skk_use_face = 1
 
 "powerline ######################################
-set nocompatible " Disable vi-compatibility
 set laststatus=2 " Always show the statusline
 

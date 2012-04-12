@@ -10,6 +10,7 @@ export SPHINX_PATH=/usr/local/Cellar/python/2.7/bin/
 
 PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 PATH=/usr/local/sbin:/usr/local/bin:$PATH
+PATH=/usr/local/maven/bin:$PATH
 PATH=$HOME/.rvm/bin:$PATH
 
 PATH=$GROOVY_HOME/bin:$PATH
@@ -74,3 +75,7 @@ precmd () {
 }
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
+source /Users/akira/.pythonbrew/etc/bashrc
+
+# aliases #############################################
+alias sshm="ssh -F ~/.ssh/config.m3"
