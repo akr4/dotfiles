@@ -39,6 +39,9 @@ set softtabstop=2
 set shiftwidth=2
 set clipboard=unnamed
 
+autocmd BufWritePre * :%s/\s\+$//ge
+autocmd BufWritePre * :%s/\t/  /ge
+
 "skk.vim ####################################
 let skk_jisyo = '~/.skk-jisyo'
 let skk_large_jisyo = '~/Library/Application Support/AquaSKK/SKK-JISYO.L'
@@ -50,4 +53,5 @@ let skk_use_face = 1
 
 "powerline ######################################
 set laststatus=2 " Always show the statusline
+set ruler
 
