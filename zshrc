@@ -74,3 +74,4 @@ precmd () {
 }
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
+source /Users/a-ueda/.pythonbrew/etc/bashrc
