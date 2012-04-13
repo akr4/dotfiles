@@ -54,4 +54,5 @@ let skk_use_face = 1
 "powerline ######################################
 set laststatus=2 " Always show the statusline
 set ruler
+let g:Powerline_symbols = 'fancy'
 
