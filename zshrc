@@ -1,15 +1,16 @@
 export LANG=ja_JP.UTF-8
 export M2_REPO=$HOME/.m2/repository
 export SVNREPO=$HOME/Documents/svnrepos
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home 
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 export GROOVY_HOME=/usr/local/groovy
 export GRAILS_HOME=/usr/local/grails-1.3.2
 export GRIFFON_HOME=/usr/local/griffon
 export HADOOP_HOME=/usr/local/hadoop
-export SPHINX_PATH=/usr/local/Cellar/python/2.7/bin/
+export SPHINX_PATH=/usr/local/Cellar/python/2.7/bin
 
 PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 PATH=/usr/local/sbin:/usr/local/bin:$PATH
+PATH=/usr/local/maven/bin:$PATH
 PATH=$HOME/.rvm/bin:$PATH
 
 PATH=$GROOVY_HOME/bin:$PATH
@@ -27,17 +28,17 @@ case ${UID} in
     PROMPT="%B%{[31m%}%/#%{[m%}%b "
     PROMPT2="%B%{[31m%}%_#%{[m%}%b "
     SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
         PROMPT="%{^[[37m%}${HOST%%.*} ${PROMPT}"
     ;;
 *)
     PROMPT="%{[31m%}%/%%%{[m%} "
     PROMPT2="%{[31m%}%_%%%{[m%} "
     SPROMPT="%{[31m%}%r is correct? [n,y,a,e]:%{[m%} "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
         PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
     ;;
-esac 
+esac
 
 bindkey -e
 autoload -Uz compinit; compinit
@@ -74,4 +75,4 @@ precmd () {
 }
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
-source /Users/a-ueda/.pythonbrew/etc/bashrc
+source ~/.pythonbrew/etc/bashrc
