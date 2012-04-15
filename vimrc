@@ -14,6 +14,7 @@ NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'taglist.vim'
 NeoBundle 'skk.vim'
 NeoBundle 'vim-scala'
+NeoBundle 'altercation/vim-colors-solarized.git'
 
 filetype plugin indent on
 
@@ -27,8 +28,6 @@ let g:neocomplcache_dictionary_filetype_lists = {
 
 
 
-syntax on
-
 set incsearch
 set ignorecase
 set smartcase
@@ -39,8 +38,17 @@ set softtabstop=2
 set shiftwidth=2
 set clipboard=unnamed
 
+syntax enable
+set background=dark
+colorscheme solarized
+
 autocmd BufWritePre * :%s/\s\+$//ge
 autocmd BufWritePre * :%s/\t/  /ge
+
+nmap <Space>b :ls<CR>:buffer
+nmap <Space>f :edit .<CR>
+nmap <Space>v :vsplit<CR><C-w><C-w>:ls<CR>:buffer
+nmap <Space>V :Vexplore!<CR><CR>
 
 "skk.vim ####################################
 let skk_jisyo = '~/.skk-jisyo'
