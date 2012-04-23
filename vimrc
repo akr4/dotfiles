@@ -15,6 +15,8 @@ NeoBundle 'taglist.vim'
 NeoBundle 'skk.vim'
 NeoBundle 'vim-scala'
 NeoBundle 'altercation/vim-colors-solarized.git'
+NeoBundle 'project.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 filetype plugin indent on
 
@@ -63,4 +65,11 @@ let skk_use_face = 1
 set laststatus=2 " Always show the statusline
 set ruler
 let g:Powerline_symbols = 'fancy'
+
+"unite #########################################
+nmap <Space>s :Unite -input=src/**/**.scala buffer file<CR>
+
+"indent guides #################################
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 2
 
