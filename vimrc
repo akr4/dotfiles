@@ -64,3 +64,11 @@ set laststatus=2 " Always show the statusline
 set ruler
 let g:Powerline_symbols = 'fancy'
 
+" unite.vim ####################################
+nmap <Space>o :Unite file -buffer-name=files<CR>
+nmap <Space>O :UniteWithBufferDir file -buffer-name=files<CR>
+nmap <Space>u :Unite file_mru<CR>
+nmap <Space>U :UniteWithCurrentDir file_mru<CR>
+nmap <Space>s :Unite file -buffer-name=files -input=src/**/**.scala<CR>
+nmap <Space>S :UniteWithCurrentDir file -buffer-name=files -input=src/**/**.scala<CR>
+
