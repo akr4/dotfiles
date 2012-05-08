@@ -76,3 +76,5 @@ precmd () {
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
 source ~/.pythonbrew/etc/bashrc
+
+stty -ixon
