@@ -15,6 +15,8 @@ NeoBundle 'taglist.vim'
 NeoBundle 'skk.vim'
 NeoBundle 'vim-scala'
 NeoBundle 'altercation/vim-colors-solarized.git'
+NeoBundle 'project.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 filetype plugin indent on
 
@@ -71,4 +73,9 @@ nmap <Space>u :Unite file_mru<CR>
 nmap <Space>U :UniteWithCurrentDir file_mru<CR>
 nmap <Space>s :Unite file -buffer-name=files -input=src/**/**.scala<CR>
 nmap <Space>S :UniteWithCurrentDir file -buffer-name=files -input=src/**/**.scala<CR>
+nmap <Space>s :Unite -input=src/**/**.scala buffer file<CR>
+
+"indent guides #################################
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 2
 
