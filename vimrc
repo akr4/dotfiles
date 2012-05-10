@@ -71,9 +71,8 @@ nmap <Space>o :Unite file -buffer-name=files<CR>
 nmap <Space>O :UniteWithBufferDir file -buffer-name=files<CR>
 nmap <Space>u :Unite file_mru<CR>
 nmap <Space>U :UniteWithCurrentDir file_mru<CR>
-nmap <Space>s :Unite file -buffer-name=files -input=src/**/**.scala<CR>
+nmap <Space>s :Unite buffer file -buffer-name=files -input=src/**/**.scala<CR>
 nmap <Space>S :UniteWithCurrentDir file -buffer-name=files -input=src/**/**.scala<CR>
-nmap <Space>s :Unite -input=src/**/**.scala buffer file<CR>
 
 "indent guides #################################
 let g:indent_guides_start_level = 2
