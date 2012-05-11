@@ -45,7 +45,7 @@ set background=dark
 colorscheme solarized
 
 autocmd BufWritePre * :%s/\s\+$//ge
-autocmd BufWritePre * :%s/\t/  /ge
+"autocmd BufWritePre * :%s/\t/  /ge
 
 nmap <Space>b :ls<CR>:buffer
 nmap <Space>f :edit .<CR>
@@ -68,6 +68,7 @@ let g:Powerline_symbols = 'fancy'
 
 "unite #########################################
 nmap <Space>s :Unite -input=src/**/**.scala buffer file<CR>
+nmap <Space>b :Unite -input=project/**.scala buffer file<CR>
 
 "indent guides #################################
 let g:indent_guides_start_level = 2
