@@ -66,9 +66,13 @@ set laststatus=2 " Always show the statusline
 set ruler
 let g:Powerline_symbols = 'fancy'
 
-"unite #########################################
-nmap <Space>s :Unite -input=src/**/**.scala buffer file<CR>
-nmap <Space>b :Unite -input=project/**.scala buffer file<CR>
+" unite.vim ####################################
+nmap <Space>o :Unite file -buffer-name=files<CR>
+nmap <Space>O :UniteWithBufferDir file -buffer-name=files<CR>
+nmap <Space>u :Unite file_mru<CR>
+nmap <Space>U :UniteWithCurrentDir file_mru<CR>
+nmap <Space>s :Unite buffer file -buffer-name=files -input=src/**/**.scala<CR>
+nmap <Space>S :UniteWithCurrentDir file -buffer-name=files -input=src/**/**.scala<CR>
 
 "indent guides #################################
 let g:indent_guides_start_level = 2
