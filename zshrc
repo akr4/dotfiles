@@ -79,4 +79,18 @@ source ~/.pythonbrew/etc/bashrc
 
 stty -ixon
 
-alias tm1="tmux set default-path \`pwd\`\; new-window\; split-window -dh -p 70\; split-window -v\; select-pane -t 2\; split-window -dv -p 20\; set -u default-path"
+tm() {
+  if [ -n $1 ]; then
+    DIR=$1
+  else
+    DIR=`pwd`
+  fi
+  tmux set default-path $DIR
+  tmux new-window
+  tmux split-window -dh -p 70
+  tmux split-window -v
+  tmux select-pane -t 2
+  tmux split-window -dv -p 20
+  tmux set -u default-path
+}
+
