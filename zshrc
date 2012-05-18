@@ -78,3 +78,5 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 source ~/.pythonbrew/etc/bashrc
 
 stty -ixon
+
+alias tm1="tmux set default-path \`pwd\`\; new-window\; split-window -dh -p 70\; split-window -v\; select-pane -t 2\; split-window -dv -p 20\; set -u default-path"
