@@ -92,5 +92,6 @@ tm() {
   tmux select-pane -t 2
   tmux split-window -dv -p 20
   tmux set -u default-path
+  tmux rename-window `basename $DIR`
 }
 
