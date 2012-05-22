@@ -78,3 +78,6 @@ nmap <Space>S :UniteWithCurrentDir file -buffer-name=files -input=src/**/**.scal
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 2
 
+"tags #########################################
+set tags=.tags,~/.tags
+
