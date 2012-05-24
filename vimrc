@@ -73,6 +73,7 @@ nmap <Space>u :Unite file_mru<CR>
 nmap <Space>U :UniteWithCurrentDir file_mru<CR>
 nmap <Space>s :Unite buffer file -buffer-name=files -input=src/**/**.scala<CR>
 nmap <Space>S :UniteWithCurrentDir file -buffer-name=files -input=src/**/**.scala<CR>
+nmap <Space>g :Unite grep:%:-iHRn<CR>
 
 "indent guides #################################
 let g:indent_guides_start_level = 2
