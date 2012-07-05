@@ -78,3 +78,39 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 source ~/.pythonbrew/etc/bashrc
 
 stty -ixon
+
+# tmux ###############################################
+tm() {
+  unset dir cmd host window_name
+
+  while getopts "c:h:" flag; do
+    case $flag in
+      \?) OPT_ERROR=1; break;;
+      h) host="$OPTARG";;
+    esac
+  done
+  shift $(( $OPTIND - 1 ))
+
+  if [ $1 ]; then
+    dir=$1
+  else
+    dir=`pwd`
+  fi
+
+  if [ $host ]; then
+    window_name=$host
+    cmd="ssh $host"
+  else
+    window_name=`basename $dir`
+  fi
+
+  tmux set default-path $dir
+  tmux new-window $cmd
+  tmux split-window -dh -p 70 $cmd
+  tmux split-window -v $cmd
+  tmux select-pane -t 2
+  tmux split-window -dv -p 20 $cmd
+  tmux set -u default-path
+  tmux rename-window $window_name
+}
+
