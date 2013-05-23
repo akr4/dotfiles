@@ -1,9 +1,9 @@
-/.gitignore
-/*.iws
-/*.iml
-/*.ipr
+.gitignore
+*.iws
+*.iml
+*.ipr
 target
 .DS_Store
-/.idea
+.idea
 *.swp
 *~

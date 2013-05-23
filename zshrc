@@ -1,17 +1,20 @@
 export LANG=ja_JP.UTF-8
 export M2_REPO=$HOME/.m2/repository
 export SVNREPO=$HOME/Documents/svnrepos
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+export JAVA_HOME=`/usr/libexec/java_home`
 export GROOVY_HOME=/usr/local/groovy
 export GRAILS_HOME=/usr/local/grails-1.3.2
 export GRIFFON_HOME=/usr/local/griffon
 export HADOOP_HOME=/usr/local/hadoop
 export SPHINX_PATH=/usr/local/Cellar/python/2.7/bin
+export XCODE_BIN_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin/
+export PYTHON_SCRIPTS=/usr/local/share/python
+
+unset M2_HOME
 
 PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 PATH=/usr/local/sbin:/usr/local/bin:$PATH
 PATH=/usr/local/maven/bin:$PATH
-PATH=$HOME/.rvm/bin:$PATH
 
 PATH=$GROOVY_HOME/bin:$PATH
 PATH=$GRAILS_HOME/bin:$PATH
@@ -19,6 +22,13 @@ PATH=$GRIFFON_HOME/bin:$PATH
 PATH=$HADOOP_HOME/bin:$PATH
 PATH=/usr/local/groovyserv/bin:$PATH
 PATH=$SPHINX_PATH:$PATH
+PATH=$XCODE_BIN_PATH:$PATH
+PATH=$PYTHON_SCRIPTS:$PATH
+PATH=/usr/local/heroku/bin:$PATH
+
+PATH=/usr/local/share/npm/lib/node_modules/coffee-script/bin:$PATH
+PATH=$HOME/bin/Sencha/Cmd/3.0.2.288:$PATH
+PATH=/usr/local/play:$PATH
 
 PATH=$HOME/bin:$PATH
 export PATH
@@ -46,6 +56,7 @@ setopt magic_equal_subst
 setopt print_eight_bit
 setopt auto_pushd
 
+# history #############################
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -56,13 +67,12 @@ classpathjars () { find $1 -name "*.jar" | xargs | sed 's/ /:/g' }
 
 export CLICOLOR=1
 export GREP_OPTIONS='--color=auto'
-
-
-export JREBEL_HOME=/Applications/ZeroTurnaround/JRebel
-PATH=$JREBEL_HOME/bin:$PATH
+export GRADLE_OPTS='-Dorg.gradle.daemon=true'
 
 
 MAVEN_OPTS="-ea -Dfile.encoding=UTF-8 -DsocksProxyHost=localhost -DsocksProxyPort=1080"
+
+alias play-dev=~/projects/Play20/play
 
 # git ##################################################
 autoload -Uz vcs_info
@@ -114,3 +124,11 @@ tm() {
   tmux rename-window $window_name
 }
 
+alias ij="open -b com.jetbrains.intellij"
+alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+alias tower="/Applications/Tower.app/Contents/MacOS/gittower"
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/Users/akira/.gvm/bin/gvm-init.sh" ]] && source "/Users/akira/.gvm/bin/gvm-init.sh"
+
+PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting

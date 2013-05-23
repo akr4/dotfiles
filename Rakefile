@@ -4,7 +4,7 @@ require_relative 'config'
 
 task :install do
   Dir['*'].each do |file|
-    next if %W[Rakefile config.rb].include? file
+    next if %W[Rakefile config.rb README.rst].include? file
 
     dotfile= to_dotfile(file)
 

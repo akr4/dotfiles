@@ -39,10 +39,11 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set clipboard=unnamed
+set modeline
+set modelines=5
 
 syntax enable
-set background=dark
-colorscheme solarized
+source $HOME/.vim/colors.vim
 
 autocmd BufWritePre * :%s/\s\+$//ge
 "autocmd BufWritePre * :%s/\t/  /ge
@@ -71,7 +72,7 @@ nmap <Space>o :Unite file -buffer-name=files<CR>
 nmap <Space>O :UniteWithBufferDir file -buffer-name=files<CR>
 nmap <Space>u :Unite file_mru<CR>
 nmap <Space>U :UniteWithCurrentDir file_mru<CR>
-nmap <Space>s :Unite buffer file -buffer-name=files -input=src/**/**.scala<CR>
+nmap <Space>s :Unite buffer file -buffer-name=files -input=**/**.scala<CR>
 nmap <Space>S :UniteWithCurrentDir file -buffer-name=files -input=src/**/**.scala<CR>
 nmap <Space>g :Unite grep:%:-iHRn<CR>
 
@@ -81,4 +82,7 @@ let g:indent_guides_guide_size = 2
 
 "tags #########################################
 set tags=.tags,~/.tags
+
+"template #####################################
+autocmd BufNewFile *.hs 0r $HOME/.vim/template/haskell.hs
 
