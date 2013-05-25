@@ -1,5 +1,6 @@
 set nocompatible
 filetype plugin indent off
+set encoding=utf-8
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -10,16 +11,16 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Lokaltog/vim-powerline'
+"NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'taglist.vim'
 NeoBundle 'skk.vim'
 NeoBundle 'vim-scala'
 NeoBundle 'altercation/vim-colors-solarized.git'
-NeoBundle 'project.vim'
+"NeoBundle 'project.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
 filetype plugin indent on
-
 
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_quick_match = 1
@@ -41,9 +42,13 @@ set shiftwidth=2
 set clipboard=unnamed
 set modeline
 set modelines=5
+set noshowmode
+set ruler
 
 syntax enable
 source $HOME/.vim/colors.vim
+
+source $HOME/.vim/statusline.vim
 
 autocmd BufWritePre * :%s/\s\+$//ge
 "autocmd BufWritePre * :%s/\t/  /ge
@@ -61,11 +66,6 @@ let skk_keep_state = 0
 let skk_egg_like_newline = 1
 let skk_show_annotation = 1
 let skk_use_face = 1
-
-"powerline ######################################
-set laststatus=2 " Always show the statusline
-set ruler
-let g:Powerline_symbols = 'fancy'
 
 " unite.vim ####################################
 nmap <Space>o :Unite file -buffer-name=files<CR>

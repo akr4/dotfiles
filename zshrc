@@ -132,3 +132,4 @@ alias tower="/Applications/Tower.app/Contents/MacOS/gittower"
 [[ -s "/Users/akira/.gvm/bin/gvm-init.sh" ]] && source "/Users/akira/.gvm/bin/gvm-init.sh"
 
 PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+
