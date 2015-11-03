@@ -1,36 +1,15 @@
 export LANG=ja_JP.UTF-8
-export M2_REPO=$HOME/.m2/repository
-export SVNREPO=$HOME/Documents/svnrepos
 export JAVA_HOME=`/usr/libexec/java_home`
-export GROOVY_HOME=/usr/local/groovy
-export GRAILS_HOME=/usr/local/grails-1.3.2
-export GRIFFON_HOME=/usr/local/griffon
-export HADOOP_HOME=/usr/local/hadoop
-export SPHINX_PATH=/usr/local/Cellar/python/2.7/bin
-export XCODE_BIN_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin/
-export PYTHON_SCRIPTS=/usr/local/share/python
+export XCODE_BIN_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin
 
-unset M2_HOME
-
-PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
-PATH=/usr/local/sbin:/usr/local/bin:$PATH
-PATH=/usr/local/maven/bin:$PATH
-
-PATH=$GROOVY_HOME/bin:$PATH
-PATH=$GRAILS_HOME/bin:$PATH
-PATH=$GRIFFON_HOME/bin:$PATH
-PATH=$HADOOP_HOME/bin:$PATH
-PATH=/usr/local/groovyserv/bin:$PATH
-PATH=$SPHINX_PATH:$PATH
+PATH=/usr/local/bin:$PATH
 PATH=$XCODE_BIN_PATH:$PATH
-PATH=$PYTHON_SCRIPTS:$PATH
-PATH=/usr/local/heroku/bin:$PATH
-
-PATH=/usr/local/share/npm/lib/node_modules/coffee-script/bin:$PATH
-PATH=$HOME/bin/Sencha/Cmd/3.0.2.288:$PATH
-PATH=/usr/local/play:$PATH
-
+PATH=/apps/heroku/bin:$PATH
+PATH=$HOME/bin/Sencha/Cmd/3.1.2.342:$PATH
 PATH=$HOME/bin:$PATH
+PATH=/usr/local/share/npm/lib/node_modules/grunt-cli/bin:$PATH
+PATH=$HOME/.go/bin:/usr/local/go/bin:$PATH
+PATH=$(npm bin -g 2>/dev/null):$PATH
 export PATH
 
 case ${UID} in
@@ -127,6 +106,18 @@ tm() {
 alias ij="open -b com.jetbrains.intellij"
 alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
 alias tower="/Applications/Tower.app/Contents/MacOS/gittower"
+alias push-release="git push origin develop master && git push origin --tags"
+alias ec="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+
+source /usr/local/bin/aws_zsh_completer.sh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+function gi() { curl https://www.gitignore.io/api/$@ ;}
+
+if [ -x "`which go`" ]; then
+  export GOPATH=$HOME/go
+  export PATH=$PATH:$GOPATH/bin
+fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/akira/.gvm/bin/gvm-init.sh" ]] && source "/Users/akira/.gvm/bin/gvm-init.sh"

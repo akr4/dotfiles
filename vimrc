@@ -11,7 +11,7 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache'
-"NeoBundle 'Lokaltog/vim-powerline'
+"NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'taglist.vim'
 NeoBundle 'skk.vim'
@@ -19,6 +19,24 @@ NeoBundle 'vim-scala'
 NeoBundle 'altercation/vim-colors-solarized.git'
 "NeoBundle 'project.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundle 'jelera/vim-javascript-syntax'
+
+NeoBundle 'nono/jquery.vim'
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
+NeoBundle 'teramako/jscomplete-vim'
+autocmd FileType javascript :setl omnifunc=jscomplete#CompleteJS
+
+NeoBundle 'majutsushi/tagbar'
+nmap <F8> :TagbarToggle<CR>
+
+NeoBundle 'scrooloose/nerdtree'
+map <C-t> :NERDTreeToggle<CR>
+map <leader>r :NERDTreeFind<CR>
+
+" Rust
+au BufRead,BufNewFile *.rs setfiletype rust
 
 filetype plugin indent on
 
@@ -47,8 +65,9 @@ set ruler
 
 syntax enable
 source $HOME/.vim/colors.vim
-
 source $HOME/.vim/statusline.vim
+"source $HOME/.vim/tab.vim
+"source $HOME/.vim/lightline.vim
 
 autocmd BufWritePre * :%s/\s\+$//ge
 "autocmd BufWritePre * :%s/\t/  /ge
@@ -58,6 +77,11 @@ nmap <Space>f :edit .<CR>
 nmap <Space>v :vsplit<CR><C-w><C-w>:ls<CR>:buffer
 nmap <Space>V :Vexplore!<CR><CR>
 
+" commands
+command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
+
+source $HOME/.vim/unite.vim
+
 "skk.vim ####################################
 let skk_jisyo = '~/.skk-jisyo'
 let skk_large_jisyo = '~/Library/Application Support/AquaSKK/SKK-JISYO.L'
@@ -66,15 +90,6 @@ let skk_keep_state = 0
 let skk_egg_like_newline = 1
 let skk_show_annotation = 1
 let skk_use_face = 1
-
-" unite.vim ####################################
-nmap <Space>o :Unite file -buffer-name=files<CR>
-nmap <Space>O :UniteWithBufferDir file -buffer-name=files<CR>
-nmap <Space>u :Unite file_mru<CR>
-nmap <Space>U :UniteWithCurrentDir file_mru<CR>
-nmap <Space>s :Unite buffer file -buffer-name=files -input=**/**.scala<CR>
-nmap <Space>S :UniteWithCurrentDir file -buffer-name=files -input=src/**/**.scala<CR>
-nmap <Space>g :Unite grep:%:-iHRn<CR>
 
 "indent guides #################################
 let g:indent_guides_start_level = 2
@@ -86,3 +101,8 @@ set tags=.tags,~/.tags
 "template #####################################
 autocmd BufNewFile *.hs 0r $HOME/.vim/template/haskell.hs
 
+"golang #######################################
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim
+endif
+au BufRead,BufNewFile *.go set filetype=go
