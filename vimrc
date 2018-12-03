@@ -98,6 +98,11 @@ let g:indent_guides_guide_size = 2
 "tags #########################################
 set tags=.tags,~/.tags
 
+"python #######################################
+autocmd FileType python setl autoindent
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd FileType python setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+
 "template #####################################
 autocmd BufNewFile *.hs 0r $HOME/.vim/template/haskell.hs
 

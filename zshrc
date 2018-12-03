@@ -1,15 +1,14 @@
 export LANG=ja_JP.UTF-8
+export LC_ALL=${LANG}
 export JAVA_HOME=`/usr/libexec/java_home`
 export XCODE_BIN_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin
 
-PATH=/usr/local/bin:$PATH
 PATH=$XCODE_BIN_PATH:$PATH
-PATH=/apps/heroku/bin:$PATH
-PATH=$HOME/bin/Sencha/Cmd/3.1.2.342:$PATH
-PATH=$HOME/bin:$PATH
-PATH=/usr/local/share/npm/lib/node_modules/grunt-cli/bin:$PATH
+PATH=/usr/local/bin:/usr/local/sbin:$PATH
+PATH=/usr/local/terraform/bin:$PATH
 PATH=$HOME/.go/bin:/usr/local/go/bin:$PATH
-PATH=$(npm bin -g 2>/dev/null):$PATH
+PATH=$HOME/app/sketchtool/bin:$PATH
+PATH=$HOME/bin:$PATH
 export PATH
 
 case ${UID} in
@@ -29,6 +28,8 @@ case ${UID} in
     ;;
 esac
 
+fpath=(~/.zfunc /usr/local/share/zsh-completions $fpath)
+
 bindkey -e
 autoload -Uz compinit; compinit
 setopt magic_equal_subst
@@ -40,18 +41,13 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 setopt hist_ignore_dups
+setopt hist_ignore_all_dups
 setopt share_history
-
-classpathjars () { find $1 -name "*.jar" | xargs | sed 's/ /:/g' }
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
 
 export CLICOLOR=1
 export GREP_OPTIONS='--color=auto'
-export GRADLE_OPTS='-Dorg.gradle.daemon=true'
-
-
-MAVEN_OPTS="-ea -Dfile.encoding=UTF-8 -DsocksProxyHost=localhost -DsocksProxyPort=1080"
-
-alias play-dev=~/projects/Play20/play
 
 # git ##################################################
 autoload -Uz vcs_info
@@ -64,63 +60,54 @@ precmd () {
 }
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
-source ~/.pythonbrew/etc/bashrc
-
-stty -ixon
-
-# tmux ###############################################
-tm() {
-  unset dir cmd host window_name
-
-  while getopts "c:h:" flag; do
-    case $flag in
-      \?) OPT_ERROR=1; break;;
-      h) host="$OPTARG";;
-    esac
-  done
-  shift $(( $OPTIND - 1 ))
-
-  if [ $1 ]; then
-    dir=$1
-  else
-    dir=`pwd`
-  fi
-
-  if [ $host ]; then
-    window_name=$host
-    cmd="ssh $host"
-  else
-    window_name=`basename $dir`
-  fi
-
-  tmux set default-path $dir
-  tmux new-window $cmd
-  tmux split-window -dh -p 70 $cmd
-  tmux split-window -v $cmd
-  tmux select-pane -t 2
-  tmux split-window -dv -p 20 $cmd
-  tmux set -u default-path
-  tmux rename-window $window_name
-}
+# aliases ###################################################
 
 alias ij="open -b com.jetbrains.intellij"
-alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
-alias tower="/Applications/Tower.app/Contents/MacOS/gittower"
+alias ac="open -b com.jetbrains.AppCode"
+alias pc="open -b com.jetbrains.PyCharm"
+alias ws="open -b com.jetbrains.webstorm"
+alias as="open -b com.google.android.studio"
 alias push-release="git push origin develop master && git push origin --tags"
 alias ec="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+alias diff=colordiff
+alias ls=exa
+alias cat=bat
+alias tf=terraform
+alias es=./node_modules/.bin/eslint
+alias pt=./node_modules/.bin/prettier
+alias dc="docker-compose"
 
-source /usr/local/bin/aws_zsh_completer.sh
+# brew install awscli
+source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 function gi() { curl https://www.gitignore.io/api/$@ ;}
+
+## fzf ###############################
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+## go #################################
 
 if [ -x "`which go`" ]; then
   export GOPATH=$HOME/go
   export PATH=$PATH:$GOPATH/bin
 fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/akira/.gvm/bin/gvm-init.sh" ]] && source "/Users/akira/.gvm/bin/gvm-init.sh"
+## Node #################################
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
-PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+## Rust #################################
+export PATH="$HOME/.cargo/bin:$PATH"
+
+## k8s ####################################
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
+if [ $commands[minikube] ]; then
+  source <(minikube completion zsh)
+fi
+
+## yarn #########################################
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
