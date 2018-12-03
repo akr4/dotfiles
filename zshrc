@@ -1,6 +1,5 @@
 export LANG=ja_JP.UTF-8
 export LC_ALL=${LANG}
-export JAVA_HOME=`/usr/libexec/java_home`
 export XCODE_BIN_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin
 
 PATH=$XCODE_BIN_PATH:$PATH
@@ -80,7 +79,7 @@ alias dc="docker-compose"
 # brew install awscli
 source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 function gi() { curl https://www.gitignore.io/api/$@ ;}
 
@@ -111,3 +110,7 @@ fi
 ## yarn #########################################
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/akira/.sdkman"
+[[ -s "/Users/akira/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/akira/.sdkman/bin/sdkman-init.sh"
