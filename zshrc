@@ -79,7 +79,7 @@ alias dc="docker-compose"
 # brew install awscli
 source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 function gi() { curl https://www.gitignore.io/api/$@ ;}
 
