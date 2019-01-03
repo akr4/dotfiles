@@ -35,6 +35,8 @@ setopt magic_equal_subst
 setopt print_eight_bit
 setopt auto_pushd
 
+export BAT_THEME=TwoDark
+
 # history #############################
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
@@ -74,7 +76,8 @@ alias cat=bat
 alias tf=terraform
 alias es=./node_modules/.bin/eslint
 alias pt=./node_modules/.bin/prettier
-alias dc="docker-compose"
+alias dc=docker-compose
+alias kc=kubectl
 
 # brew install awscli
 source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
@@ -97,7 +100,7 @@ fi
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 ## Rust #################################
-export PATH="$HOME/.cargo/bin:$PATH"
+source $HOME/.cargo/env
 
 ## k8s ####################################
 if [ $commands[kubectl] ]; then
