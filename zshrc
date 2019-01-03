@@ -27,6 +27,8 @@ case ${UID} in
     ;;
 esac
 
+# brew install zsh-completions
+# mkdir ~/.zfunc
 fpath=(~/.zfunc /usr/local/share/zsh-completions $fpath)
 
 bindkey -e
@@ -82,7 +84,8 @@ alias kc=kubectl
 # brew install awscli
 source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 
-source ${HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# brew install zsh-syntax-highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 function gi() { curl https://www.gitignore.io/api/$@ ;}
 
