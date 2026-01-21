@@ -23,6 +23,8 @@ local color_schemes = {
     'jubi',
     'Ivory Dark (terminal.sexy)',
     'Seafoam Pastel',
+    'Japanesque',
+    'Eldrado dark (terminal.sexy)',
 }
 
 -- ワークスペースごとの固定color_scheme
