@@ -27,9 +27,12 @@ local color_schemes = {
 }
 
 -- ワークスペースごとの固定color_scheme
-local workspace_color_schemes = {
-    -- ['workspace-name'] = 'color_scheme_name',
-}
+-- 定義例:
+-- local workspace_color_schemes = {
+--   ['workspace-name'] = 'color_scheme_name',
+-- }
+local ok, result = pcall(require, "workspace-color-schemes")
+local workspace_color_schemes = ok and result or {}
 
 -- workspace名から配列のインデックスを生成する
 local function get_hash_index(str, array_length)
