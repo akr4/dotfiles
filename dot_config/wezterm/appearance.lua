@@ -22,13 +22,12 @@ local color_schemes = {
     'JWR dark (terminal.sexy)',
     'jubi',
     'Ivory Dark (terminal.sexy)',
-    'Canvased Pastel (terminal.sexy)',
     'Seafoam Pastel',
 }
 
 -- ワークスペースごとの固定color_scheme
 -- 定義例:
--- local workspace_color_schemes = {
+-- return {
 --   ['workspace-name'] = 'color_scheme_name',
 -- }
 local ok, result = pcall(require, "workspace-color-schemes")
