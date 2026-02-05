@@ -1,0 +1,3 @@
+source ~/.zsh/common.zsh
+[ -f ~/.zsh/local.zsh ] && source ~/.zsh/local.zsh
+[ -f ~/.secrets.env ] && source ~/.secrets.env
