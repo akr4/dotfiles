@@ -17,7 +17,7 @@ setopt hist_ignore_dups hist_ignore_all_dups share_history hist_reduce_blanks hi
 
 # --- Homebrew ---
 eval "$(/opt/homebrew/bin/brew shellenv)"
-path=(/opt/homebrew/opt/postgresql@16/bin $path)
+path=(/opt/homebrew/opt/postgresql@17/bin $path)
 fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 
 # --- Rust ---
