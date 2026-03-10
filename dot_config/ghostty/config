@@ -1,0 +1,14 @@
+font-family = 0xProto Regular
+font-family-bold = 0xProto Bold
+font-family-italic = 0xProto Italic
+font-size = 14
+font-family-bold-italic = 0xProto Bold Italic
+font-codepoint-map = U+3000-U+9FFF=Hiragino Maru Gothic ProN
+font-codepoint-map = U+F900-U+FAFF=Hiragino Maru Gothic ProN
+font-codepoint-map = U+FF00-U+FFEF=Hiragino Maru Gothic ProN
+
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+
+term = xterm-256color
+
+macos-titlebar-style = tabs

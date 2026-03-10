@@ -1,0 +1,81 @@
+#!/bin/sh
+# tms - tmux session manager
+# WezTerm smart_workspace_switcher equivalent
+#
+# Usage:
+#   tms [session-name]   # Attach/create session
+#   tms                  # fzf session picker
+
+set -e
+
+# Save current session on detach
+_save_on_detach() {
+  if [ -n "$TMUX" ]; then
+    resurrect_save="$HOME/.tmux/plugins/tmux-resurrect/scripts/save.sh"
+    [ -x "$resurrect_save" ] && "$resurrect_save" quiet
+  fi
+}
+
+_attach_or_create() {
+  local session_name="$1"
+
+  if tmux has-session -t "=$session_name" 2>/dev/null; then
+    # Session exists - attach or switch
+    if [ -n "$TMUX" ]; then
+      tmux switch-client -t "=$session_name"
+    else
+      tmux attach-session -t "=$session_name"
+    fi
+  else
+    # Create new session
+    if [ -n "$TMUX" ]; then
+      tmux new-session -d -s "$session_name"
+      tmux switch-client -t "=$session_name"
+    else
+      tmux new-session -s "$session_name"
+    fi
+  fi
+}
+
+_select_session() {
+  local sessions
+  sessions=$(tmux list-sessions -F '#{session_name}' 2>/dev/null || true)
+
+  if command -v fzf >/dev/null 2>&1; then
+    local selected
+    selected=$(printf '%s\n[new session]' "$sessions" | fzf --reverse --prompt="tmux session> " || true)
+
+    if [ -z "$selected" ]; then
+      return 0
+    elif [ "$selected" = "[new session]" ]; then
+      printf "Session name: "
+      read -r session_name
+      [ -n "$session_name" ] && _attach_or_create "$session_name"
+    else
+      _attach_or_create "$selected"
+    fi
+  else
+    # Fallback: tmux choose-session (only works inside tmux)
+    if [ -n "$TMUX" ]; then
+      tmux choose-session
+    else
+      echo "Available sessions:"
+      tmux list-sessions 2>/dev/null || echo "  (none)"
+      printf "Session name: "
+      read -r session_name
+      [ -n "$session_name" ] && _attach_or_create "$session_name"
+    fi
+  fi
+}
+
+# Trap detach to auto-save
+trap '_save_on_detach' EXIT
+
+# Main
+if [ $# -ge 1 ]; then
+  _attach_or_create "$1"
+else
+  # Start tmux server if not running
+  tmux start-server 2>/dev/null || true
+  _select_session
+fi
