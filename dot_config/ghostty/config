@@ -12,3 +12,4 @@ theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 term = xterm-256color
 
 macos-titlebar-style = tabs
+shell-integration-features = no-title

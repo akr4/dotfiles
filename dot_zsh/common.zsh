@@ -31,6 +31,9 @@ alias dc="docker compose"
 # --- kubectl ---
 alias kc=kubectl
 
+# --- tmux ---
+t() { tmux new-session -A -s "${1:-$(basename "$PWD")}"; }
+
 # --- fzf ---
 alias hxf='hx $(fzf)'
 
