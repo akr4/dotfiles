@@ -53,6 +53,7 @@ alias tf=terraform
 
 # --- Other tools ---
 path=(
+    $HOME/.local/bin
     $HOME/bin
     $HOME/Library/Android/sdk/platform-tools
     /Applications/WezTerm.app/Contents/MacOS
