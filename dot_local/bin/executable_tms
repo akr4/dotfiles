@@ -75,7 +75,21 @@ trap '_save_on_detach' EXIT
 if [ $# -ge 1 ]; then
   _attach_or_create "$1"
 else
-  # Start tmux server if not running
-  tmux start-server 2>/dev/null || true
+  # If no tmux server running, try to restore saved sessions first
+  if ! tmux list-sessions 2>/dev/null | grep -q .; then
+    resurrect_restore="$HOME/.tmux/plugins/tmux-resurrect/scripts/restore.sh"
+    if [ -x "$resurrect_restore" ]; then
+      # Create a temporary session so tmux server starts and config loads
+      tmux new-session -d -s _restore_tmp 2>/dev/null || true
+      # Give TPM a moment to initialize
+      sleep 1
+      "$resurrect_restore"
+      sleep 1
+      # Clean up temp session if restore created real sessions
+      if tmux list-sessions 2>/dev/null | grep -qv '^_restore_tmp:'; then
+        tmux kill-session -t _restore_tmp 2>/dev/null || true
+      fi
+    fi
+  fi
   _select_session
 fi
