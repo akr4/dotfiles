@@ -65,6 +65,7 @@ path=(
     $path
 )
 alias grep='grep --color=auto'
+alias claude='claude --effort max'
 alias typora="open -a typora"
 
 # --- Google Cloud SDK ---
