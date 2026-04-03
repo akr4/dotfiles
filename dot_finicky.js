@@ -1,5 +1,5 @@
 module.exports = {
-  defaultBrowser: "Safari",
+  defaultBrowser: "Chrome",
   handlers: [
     {
       match: /^https?:\/\/linear\.app\//,
