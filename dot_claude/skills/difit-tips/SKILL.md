@@ -1,6 +1,6 @@
-# difit カスタムtips
+# difit-review カスタムtips
 
-> まず ~/.claude/skills/difit-review/SKILL.md を読んでから、以下の補足も適用すること
+~/.claude/skills/difit-review/SKILL.md に従う。以下の補足も適用すること
 
 ## 運用ノウハウ
 - 未コミットの変更を表示: `difit .`（新規ファイルがある場合は `--include-untracked` を追加）
