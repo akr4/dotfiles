@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+default=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's|refs/remotes/origin/||')
+git switch "$default"
+git pull -p
+git branch -vv | sed 's/^[*+] /  /' | grep ': gone]' | awk '{print $1}' | xargs -r git branch -d
+
