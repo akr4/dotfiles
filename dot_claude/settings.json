@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "GIT_AUTHOR_NAME": "aiiro-claude[bot]",
+    "GIT_AUTHOR_EMAIL": "264094622+aiiro-claude[bot]@users.noreply.github.com",
+    "GIT_COMMITTER_NAME": "aiiro-claude[bot]",
+    "GIT_COMMITTER_EMAIL": "264094622+aiiro-claude[bot]@users.noreply.github.com",
+    "TMPDIR": "/tmp",
+    "GIT_CONFIG_COUNT": "2",
+    "GIT_CONFIG_KEY_0": "url.https://github.com/.insteadOf",
+    "GIT_CONFIG_VALUE_0": "git@github.com:",
+    "GIT_CONFIG_KEY_1": "credential.https://github.com/.helper",
+    "GIT_CONFIG_VALUE_1": "!echo username=x-access-token; echo password=$GH_TOKEN"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(gh pr create:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run download:*)",
+      "Bash(gh workflow run:*)",
+      "mcp__sentry",
+      "mcp__playwright",
+      "mcp__linear"
+    ],
+    "deny": [
+      "Bash(gh auth switch)"
+    ]
+  },
+  "model": "claude-opus-4-6[1m]",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify-done.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "printf '\\033[31m%%\\033[0m '"
+  },
+  "enabledPlugins": {
+    "commit-commands@claude-plugins-official": true,
+    "sentry@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "network": {
+      "allowedDomains": [
+        "api.github.com"
+      ]
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/.sbt/"
+      ]
+    },
+    "excludedCommands": [
+      "gh",
+      "just -g claude-update-gh-token"
+    ]
+  },
+  "alwaysThinkingEnabled": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754041286752
+  },
+  "language": "日本語"
+}
