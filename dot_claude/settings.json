@@ -51,8 +51,12 @@
     "commit-commands@claude-plugins-official": true,
     "sentry@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true
+    "swift-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true
   },
+  "language": "日本語",
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
@@ -74,6 +78,5 @@
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754041286752
-  },
-  "language": "日本語"
+  }
 }

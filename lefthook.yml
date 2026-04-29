@@ -1,0 +1,6 @@
+pre-push:
+  jobs:
+    - name: gitleaks
+      tags:
+        - security
+      run: gitleaks git
