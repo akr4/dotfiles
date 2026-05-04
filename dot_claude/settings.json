@@ -72,7 +72,8 @@
     },
     "excludedCommands": [
       "gh",
-      "just -g claude-update-gh-token"
+      "just -g claude-update-gh-token",
+      "~/.claude/skills/review-pr-review/scripts/"
     ]
   },
   "alwaysThinkingEnabled": true,
